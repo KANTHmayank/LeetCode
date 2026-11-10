@@ -6,7 +6,7 @@ class Solution:
         return True if time <= h else False
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
         l = 1
-        r = sum(piles)
+        r = max(piles)
         while l <= r:
             mid = (l + r) // 2
             if (self.khaSaktaHai(piles, h, mid)):
