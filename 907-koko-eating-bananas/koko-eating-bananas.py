@@ -3,10 +3,11 @@ class Solution:
         time = 0
         for i in range(len(piles)):
             time += (piles[i] + x - 1) // x
-        return True if time <= h else False
+        return time <= h 
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
         l = 1
         r = max(piles)
+        ans = r
         while l <= r:
             mid = (l + r) // 2
             if (self.khaSaktaHai(piles, h, mid)):
