@@ -5,9 +5,9 @@ class Solution:
             total += x // time[i]
         return total >= totalTrips
     def minimumTime(self, time: list[int], totalTrips: int) -> int:
-        l = min(time)
+        l = (totalTrips*min(time)) // len(time)
         h = max(time) * totalTrips
-        ans = h
+        ans = h 
         while l <= h:
             mid = (l + h) // 2
             if(self.tripsCompleted(time, totalTrips, mid)):
