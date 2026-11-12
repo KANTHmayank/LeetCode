@@ -5,7 +5,7 @@ class Solution:
             total += x // time[i]
         return total >= totalTrips
     def minimumTime(self, time: list[int], totalTrips: int) -> int:
-        l = 1
+        l = min(time)
         h = max(time) * totalTrips
         ans = h
         while l <= h:
