@@ -5,12 +5,12 @@ class Solution:
         dq = deque()
         n = len(nums)
         for i in range(n):
-            # Step 1: Window size check
+            # Step 1: Window size check (Queue beahvior)
             while(dq and dq[0] <= i- k):
                 dq.popleft()
 
-            # sTep 2: smaller element check
-            while(dq and nums[i] >= nums[dq[-1]]):
+            # sTep 2: smaller element check (Stack behavior)
+            while(dq and nums[i] > nums[dq[-1]]):
                 dq.pop()
 
             #Step 3: insert ele in deque
