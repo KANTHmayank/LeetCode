@@ -8,11 +8,7 @@ class Solution:
             if(arr[i] % 2 != 0):
                 
                     evenSum, oddSum = oddSum, evenSum + 1
-                
-                    
-                
-                
-                
+            
             else:
                 
                     oddSum, evenSum = oddSum, evenSum + 1
