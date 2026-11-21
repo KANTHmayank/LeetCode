@@ -12,15 +12,16 @@ class Solution:
         freq = {}
         for i in words:
             freq[i]  = freq.get(i, 0) + 1
-        h =[]
-        for key,value in freq.items():
-            if len(h) < k:
-                heapq.heappush(h, Pair(value, key))
+        # h =[]
+        # for key,value in freq.items():
+        #     if len(h) < k:
+        #         heapq.heappush(h, Pair(value, key))
 
-            elif Pair(value,key) > h[0]:
-                heapq.heapreplace(h, Pair(value, key))
+        #     elif Pair(value,key) > h[0]:
+        #         heapq.heapreplace(h, Pair(value, key))
 
-        ans = []
-        while h:
-            ans.append(heapq.heappop(h).second)
-        return ans[::-1]
+        # ans = []
+        # while h:
+        #     ans.append(heapq.heappop(h).second)
+        # return ans[::-1]
+        return heapq.nsmallest(k, freq, key=lambda w: (-freq[w], w))
