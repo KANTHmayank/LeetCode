@@ -5,7 +5,7 @@ class Pair:
         self.second = second
     def __lt__(self, other):
         if self.first != other.first:
-            return self.first > other.first
+            return self.first < other.first
         
 class Solution:
     def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
@@ -14,9 +14,9 @@ class Solution:
             d = x*x + y*y
 
             if len(h) < k:
-                heapq.heappush(h, Pair(d, [x,y]))
-            elif d < h[0].first:
-                heapq.heapreplace(h, Pair(d, [x,y]))
+                heapq.heappush(h, Pair(-d, [x,y]))
+            elif d < -h[0].first:
+                heapq.heapreplace(h, Pair(-d, [x,y]))
 
         ans= []
         while h:
