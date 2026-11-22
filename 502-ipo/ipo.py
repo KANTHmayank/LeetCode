@@ -37,24 +37,38 @@ class Solution:
         #         return w 
         # return w
 
-        minHeap = []
-        for i in range(len(profits)):
-            heapq.heappush(minHeap, Pair(capital[i], profits[i]))
+        # minHeap = []
+        # for i in range(len(profits)):
+        #     heapq.heappush(minHeap, Pair(capital[i], profits[i]))
 
-        count = 0
-        maxHeap = []
+        # count = 0
+        # maxHeap = []
 
-        while count < k:
-            while minHeap and minHeap[0].first <= w:
-                p = heapq.heappop(minHeap)
-                heapq.heappush(maxHeap, Pair(-p.second, p.first))
+        # while count < k:
+        #     while minHeap and minHeap[0].first <= w:
+        #         p = heapq.heappop(minHeap)
+        #         heapq.heappush(maxHeap, Pair(-p.second, p.first))
 
-            if not maxHeap:
+        #     if not maxHeap:
+        #         break
+
+        #     p = heapq.heappop(maxHeap)
+        #     w += -p.first
+        #     count += 1
+
+        # return w
+            
+        projects = sorted(zip(capital, profits))   # replaces the capital heap
+        n = len(projects)
+        h = []          # plain negated ints: C-level comparisons
+        i = 0
+
+        for _ in range(k):
+            while i < n and projects[i][0] <= w:
+                heapq.heappush(h, -projects[i][1])
+                i += 1
+            if not h:
                 break
-
-            p = heapq.heappop(maxHeap)
-            w += -p.first
-            count += 1
+            w -= heapq.heappop(h)
 
         return w
-            
